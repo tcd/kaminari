@@ -70,7 +70,8 @@ module Kaminari
         DEF
       end
 
-      def to_s #:nodoc:
+      # @return [String]
+      def to_s
         Thread.current[:kaminari_rendering] = true
         super @window_options.merge paginator: self
       ensure

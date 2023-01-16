@@ -9,7 +9,7 @@ module Kaminari
       model_name.human(options.reverse_merge(default: default))
     end
 
-    def reset #:nodoc:
+    def reset
       @total_count = nil
       super
     end

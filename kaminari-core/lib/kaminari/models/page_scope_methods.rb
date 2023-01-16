@@ -2,7 +2,9 @@
 
 module Kaminari
   module PageScopeMethods
-    # Specify the <tt>per_page</tt> value for the preceding <tt>page</tt> scope
+    # Specify the `per_page` value for the preceding `page` scope
+    #
+    # @example
     #   Model.page(3).per(10)
     def per(num, max_per_page: nil)
       max_per_page ||= ((defined?(@_max_per_page) && @_max_per_page) || self.max_per_page)
@@ -32,6 +34,8 @@ module Kaminari
     end
 
     # Total number of pages
+    #
+    # @return [Integer]
     def total_pages
       count_without_padding = total_count
       count_without_padding -= @_padding if defined?(@_padding) && @_padding
@@ -44,6 +48,8 @@ module Kaminari
     end
 
     # Current page number
+    #
+    # @return [Integer]
     def current_page
       offset_without_padding = offset_value
       offset_without_padding -= @_padding if defined?(@_padding) && @_padding
@@ -55,6 +61,10 @@ module Kaminari
     end
 
     # Current per-page number
+    #
+    # @deprecated Use {#limit_value} instead.
+    # @raise [ActiveSupport::Deprecation] this method is deprecated
+    # @return [Integer]
     def current_per_page
       ActiveSupport::Deprecation.warn '#current_per_page is deprecated and will be removed in the next major ' \
                                       'version. Please use #limit_value instead.'
@@ -64,26 +74,36 @@ module Kaminari
     end
 
     # Next page number in the collection
+    #
+    # @return [Integer]
     def next_page
       current_page + 1 unless last_page? || out_of_range?
     end
 
     # Previous page number in the collection
+    #
+    # @return [Integer]
     def prev_page
       current_page - 1 unless first_page? || out_of_range?
     end
 
     # First page of the collection?
+    #
+    # @return [Boolean]
     def first_page?
       current_page == 1
     end
 
     # Last page of the collection?
+    #
+    # @return [Boolean]
     def last_page?
       current_page == total_pages
     end
 
     # Out of range of the collection?
+    #
+    # @return [Boolean]
     def out_of_range?
       current_page > total_pages
     end

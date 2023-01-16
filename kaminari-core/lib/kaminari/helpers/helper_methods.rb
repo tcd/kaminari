@@ -3,19 +3,19 @@
 module Kaminari
   module Helpers
 
-    # The Kaminari::Helpers::UrlHelper module provides useful methods for
-    # generating a path or url to a particular page. A class must implement the
-    # following methods:
+    # The `Kaminari::Helpers::UrlHelper`` module provides useful methods for
+    # generating a path or url to a particular page.
     #
-    #   * <tt>url_for</tt>: A method that generates an actual path
-    #   * <tt>params</tt>: A method that returns query string parameters
-    #   * <tt>request</tt>: A method that returns a Rack::Request object
+    # A class must implement the following methods:
+    #
+    #   - `url_for`: A method that generates an actual path
+    #   - `params`: A method that returns query string parameters
+    #   - `request`: A method that returns a Rack::Request object
     #
     # A normal Rails controller implements all the methods, which make it
     # trivial to use this module:
     #
-    # ==== Examples
-    #
+    # @example
     #   class UsersController < ApplicationController
     #     include Kaminari::Helpers::UrlHelper
     #
@@ -31,13 +31,14 @@ module Kaminari
 
       # A helper that calculates the url to the next page.
       #
-      # ==== Examples
-      # Basic usage:
+      # @example Basic usage
       #
       #   <%= next_page_url @items %>
       #   #-> http://www.example.org/items?page=2
       #
       # It will return `nil` if there is no next page.
+      #
+      # @return [String]
       def next_page_url(scope, options = {})
         "#{request.base_url}#{next_page_path(scope, options)}" if scope.next_page
       end
@@ -50,13 +51,14 @@ module Kaminari
 
       # A helper that calculates the url to the previous page.
       #
-      # ==== Examples
-      # Basic usage:
+      # @example Basic usage
       #
       #   <%= prev_page_url @items %>
       #   #-> http://www.example.org/items
       #
       # It will return `nil` if there is no previous page.
+      #
+      # @return [String]
       def prev_page_url(scope, options = {})
         "#{request.base_url}#{prev_page_path(scope, options)}" if scope.prev_page
       end
@@ -66,8 +68,7 @@ module Kaminari
 
       # A helper that calculates the path to the next page.
       #
-      # ==== Examples
-      # Basic usage:
+      # @example Basic usage
       #
       #   <%= path_to_next_page @items %>
       #   #-> /items?page=2
@@ -123,12 +124,11 @@ module Kaminari
 
       # A simple "Twitter like" pagination link that creates a link to the previous page.
       #
-      # ==== Examples
-      # Basic usage:
+      # @example Basic usage
       #
       #   <%= link_to_previous_page @items, 'Previous Page' %>
       #
-      # Ajax:
+      # @example Ajax
       #
       #   <%= link_to_previous_page @items, 'Previous Page', remote: true %>
       #
@@ -154,12 +154,11 @@ module Kaminari
 
       # A simple "Twitter like" pagination link that creates a link to the next page.
       #
-      # ==== Examples
-      # Basic usage:
+      # @example Basic usage
       #
       #   <%= link_to_next_page @items, 'Next Page' %>
       #
-      # Ajax:
+      # @example Ajax
       #
       #   <%= link_to_next_page @items, 'Next Page', remote: true %>
       #

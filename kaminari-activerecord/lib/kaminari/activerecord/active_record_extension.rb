@@ -6,7 +6,7 @@ module Kaminari
   module ActiveRecordExtension
     extend ActiveSupport::Concern
 
-    module ClassMethods #:nodoc:
+    module ClassMethods
       # Future subclasses will pick up the model extension
       def inherited(kls) #:nodoc:
         super

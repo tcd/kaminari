@@ -6,6 +6,7 @@ module Kaminari
   class PaginatableArray < Array
     include Kaminari::ConfigurationMethods::ClassMethods
 
+    # @return [String]
     ENTRY = 'entry'.freeze
 
     attr_internal_accessor :limit_value, :offset_value
@@ -51,6 +52,8 @@ module Kaminari
     end
 
     # total item numbers of the original array
+    #
+    # @return [Integer]
     def total_count
       @_total_count || @_original_array.length
     end

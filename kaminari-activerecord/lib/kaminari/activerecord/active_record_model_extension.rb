@@ -10,6 +10,8 @@ module Kaminari
       include Kaminari::ConfigurationMethods
 
       # Fetch the values at the specified page number
+      #
+      # @example
       #   Model.page(5)
       eval <<-RUBY, nil, __FILE__, __LINE__ + 1
         def self.#{Kaminari.config.page_method_name}(num = nil)
